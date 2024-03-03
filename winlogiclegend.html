@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ultimate Helper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Great Vibes', cursive;
+      background-color: #40e0d0; /* Turquoise */
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      color: #000;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3 {
+      color: #000;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      background-color: #007bff;
+      font-family: 'Great Vibes', cursive;
+      transition: all 0.3s ease;
+    }
+    button i {
+      margin-right: 5px;
+    }
+    button.student {
+      background-color: #28a745;
+    }
+    button.subject.math {
+      background-color: #6c757d;
+    }
+    button.subject.science {
+      background-color: #007bff;
+    }
+    button.subject.english {
+      background-color: #ffc107;
+    }
+    button.subject.humanities {
+      background-color: #dc3545;
+    }
+    button.subject.cs {
+      background-color: #6610f2;
+    }
+    button.subject.ict {
+      background-color: #6610f2;
+    }
+    button.subject.business {
+      background-color: #28a745;
+    }
+    button.text-to-image {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      background-color: #6c757d;
+      font-family: 'Great Vibes', cursive;
+      transition: all 0.3s ease;
+    }
+    button.text-to-image i {
+      margin-right: 5px;
+    }
+    button.speech-to-text {
+      position: fixed;
+      bottom: 60px;
+      left: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      background-color: #007bff;
+      font-family: 'Great Vibes', cursive;
+      transition: all 0.3s ease;
+    }
+    button.speech-to-text i {
+      margin-right: 5px;
+    }
+    .wellbeing {
+      background-color: #dc3545;
+      border-radius: 50%;
+    }
+    .message {
+      color: #fff;
+      font-size: 12px;
+      margin-top: 10px;
+      position: fixed;
+      bottom: 10px;
+      right: 60px;
+    }
+    .wellbeing-container {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+    }
+    input {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 5px;
+    }
+    .translator-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    button.translator {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      background-color: #6c757d;
+      font-family: 'Great Vibes', cursive;
+      transition: all 0.3s ease;
+    }
+    button.translator i {
+      margin-right: 5px;
+    }
+    button:hover, button:focus {
+      filter: brightness(90%);
+    }
+    button.translator:hover, button.translator:focus {
+      filter: brightness(90%);
+    }
+    .brightness-buttons {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+    .brightness-buttons button {
+      margin: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #6c757d;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .brightness-buttons button i {
+      margin-right: 5px;
+    }
+    .zoom-buttons {
+      position: fixed;
+      top: 50px;
+      right: 10px;
+    }
+    .zoom-buttons button {
+      margin: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #6c757d;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .zoom-buttons button i {
+      margin-right: 5px;
+    }
+    .credits-button {
+      position: fixed;
+      top: 90px;
+      right: 10px;
+    }
+    .credits-button button {
+      margin: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #6c757d;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .credits-button button i {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>The Ultimate Helper</h1>
+    <h2>Select your role:</h2>
+    <form id="roleForm" method="post" action="#">
+      <button type="button" class="teacher" name="role" value="teacher"><i class="fas fa-chalkboard-teacher"></i> Teacher</button>
+      <button type="button" class="student" name="role" value="student"><i class="fas fa-user-graduate"></i> Student</button>
+    </form>
+    <div id="loginForm" style="display:none;">
+      <input type="text" id="username" placeholder="Enter your username">
+      <input type="password" id="password" placeholder="Enter your password">
+      <button id="loginBtn">Login</button>
+    </div>
+    <div id="studentArea" style="display:none;">
+      <h2>Welcome, <span id="studentName"></span>!</h2>
+      <h3>Select a subject:</h3>
+      <button class="subject math" id="mathBtn"><i class="fas fa-calculator"></i> Math</button>
+      <button class="subject science" id="scienceBtn"><i class="fas fa-flask"></i> Science</button>
+      <button class="subject english" id="englishBtn"><i class="fas fa-book"></i> English</button>
+      <button class="subject humanities" id="humanitiesBtn"><i class="fas fa-globe"></i> Humanities</button>
+      <button class="subject cs" id="csBtn"><i class="fas fa-laptop-code"></i> CS</button>
+      <button class="subject ict" id="ictBtn"><i class="fas fa-laptop-code"></i> ICT</button>
+      <button class="subject business" id="businessBtn"><i class="fas fa-chart-line"></i> Business</button>
+    </div>
+    <div id="teacherArea" style="display:none;">
+      <input type="text" id="teacherUsername" placeholder="Enter your username">
+      <input type="password" id="teacherPassword" placeholder="Enter your password">
+      <button id="teacherLoginBtn">Login as Teacher</button>
+      <div id="teacherContent" style="display:none;">
+        <button class="feedback" onclick="window.open('https://294e1b203719e96a0f.gradio.live', '_blank')"><i class="fas fa-comment-alt"></i> Feedback</button>
+        <button class="plagiarism" onclick="window.open('https://d70e83c194b48d8c89.gradio.live', '_blank')"><i class="fas fa-exclamation-triangle"></i> Plagiarism Checker</button>
+        <button id="gradeCalculatorBtn" onclick="window.open('https://www.calculator.net/grade-calculator.html', '_blank')"><i class="fas fa-calculator"></i> Grade Calculator</button>
+        <div id="gradeCalculator" style="display:none;">
+          <input type="number" id="fa1Grade" placeholder="Enter FA1 Grade">
+          <input type="number" id="fa2Grade" placeholder="Enter FA2 Grade">
+          <input type="number" id="sa1Grade" placeholder="Enter SA1 Grade">
+          <button id="calculateGradeBtn">Calculate Final Grade</button>
+          <button id="finalGradeBtn" style="display:none;"></button>
+        </div>
+      </div>
+    </div>
+    <div class="wellbeing-container">
+      <button class="wellbeing" id="wellbeingBtn" onclick="window.open('https://e8572914ed9df63ee7.gradio.live', '_blank')"><i class="fas fa-comments"></i></button>
+      <div class="message">To be added to GemsClassroom</div>
+    </div>
+  </div>
+  
+  <div class="translator-container">
+    <button class="translator" onclick="window.open('https://73ac62f89c1599bc97.gradio.live', '_blank')"><i class="fas fa-language"></i> Translator</button>
+  </div>
+
+  <button class="text-to-image" onclick="window.open('https://textintoimages.com/', '_blank')"><i class="fas fa-image"></i> Text to Image</button>
+
+  <button class="speech-to-text" onclick="window.open('https://myvoice2text.com/', '_blank')"><i class="fas fa-microphone"></i> Speech to Text</button>
+
+  <div class="brightness-buttons">
+    <button onclick="increaseBrightness()"><i class="fas fa-sun"></i> Increase Brightness</button>
+    <button onclick="decreaseBrightness()"><i class="fas fa-moon"></i> Decrease Brightness</button>
+    <button onclick="normalBrightness()"><i class="fas fa-lightbulb"></i> Normal Brightness</button>
+  </div>
+
+  <div class="zoom-buttons">
+    <button onclick="zoomIn()"><i class="fas fa-search-plus"></i> Zoom In</button>
+    <button onclick="zoomOut()"><i class="fas fa-search-minus"></i> Zoom Out</button>
+    <button onclick="normalSize()"><i class="fas fa-expand"></i> Normal Size</button>
+  </div>
+
+  <div class="credits-button">
+    <button onclick="openCredits()"><i class="fas fa-info-circle"></i> Credits</button>
+  </div>
+
+  <script>
+    // Your JavaScript code here
+    const roleForm = document.getElementById('roleForm');
+    const loginForm = document.getElementById('loginForm');
+    const studentArea = document.getElementById('studentArea');
+    const teacherArea = document.getElementById('teacherArea');
+    const teacherLoginBtn = document.getElementById('teacherLoginBtn');
+    const teacherContent = document.getElementById('teacherContent');
+    const loginBtn = document.getElementById('loginBtn');
+    const usernameField = document.getElementById('username');
+    const passwordField = document.getElementById('password');
+    const studentNameSpan = document.getElementById('studentName');
+    const teacherUsernameField = document.getElementById('teacherUsername');
+    const teacherPasswordField = document.getElementById('teacherPassword');
+    const fa1GradeInput = document.getElementById('fa1Grade');
+    const fa2GradeInput = document.getElementById('fa2Grade');
+    const sa1GradeInput = document.getElementById('sa1Grade');
+    const calculateGradeBtn = document.getElementById('calculateGradeBtn');
+    const finalGradeBtn = document.getElementById('finalGradeBtn');
+
+    calculateGradeBtn.addEventListener('click', () => {
+      const fa1Grade = parseFloat(fa1GradeInput.value);
+      const fa2Grade = parseFloat(fa2GradeInput.value);
+      const sa1Grade = parseFloat(sa1GradeInput.value);
+
+      // Check if the grades are valid numbers and within the range of 0-100
+      if (!isNaN(fa1Grade) && !isNaN(fa2Grade) && !isNaN(sa1Grade) &&
+          fa1Grade >= 0 && fa1Grade <= 100 &&
+          fa2Grade >= 0 && fa2Grade <= 100 &&
+          sa1Grade >= 0 && sa1Grade <= 100) {
+        const finalGrade = (fa1Grade + fa2Grade + sa1Grade) / 3;
+        const letterGrade = calculateLetterGrade(finalGrade);
+        finalGradeBtn.textContent = `Final Grade: ${finalGrade.toFixed(2)} (${letterGrade})`;
+        finalGradeBtn.style.display = 'inline-block';
+      } else {
+        alert('Please enter valid grades between 0 and 100.');
+      }
+    });
+
+    function calculateLetterGrade(finalGrade) {
+      if (finalGrade >= 90) {
+        return 'A*';
+      } else if (finalGrade >= 80) {
+        return 'A';
+      } else if (finalGrade >= 70) {
+        return 'B';
+      } else if (finalGrade >= 60) {
+        return 'C';
+      } else {
+        return 'F';
+      }
+    }
+
+    roleForm.addEventListener('click', (event) => {
+      event.preventDefault();
+      const selectedRole = event.target.value;
+      if (selectedRole === 'teacher') {
+        // Display the teacher login form
+        loginForm.style.display = 'none';
+        teacherArea.style.display = 'block';
+      } else if (selectedRole === 'student') {
+        // Display the student login form
+        loginForm.style.display = 'block';
+        teacherArea.style.display = 'none';
+      }
+    });
+
+    loginBtn.addEventListener('click', () => {
+      const username = usernameField.value;
+      const password = passwordField.value;
+      // You might also want to implement actual username and password validation here
+      if (username !== '' && password !== '') {
+        // Display the student area after successful login
+        showStudentArea(username);
+      } else {
+        alert('Please enter your username and password');
+      }
+    });
+
+    teacherLoginBtn.addEventListener('click', () => {
+      const username = teacherUsernameField.value;
+      const password = teacherPasswordField.value;
+      // You might also want to implement actual username and password validation here
+      if (username && password) {
+        // Display the teacher area after successful login
+        teacherContent.style.display = 'block';
+      } else {
+        alert('Please enter your username and password');
+      }
+    });
+
+    const subjects = [
+      { name: 'math', url: 'https://1651ad695b5ec50090.gradio.live' },
+      { name: 'science', url: 'https://9af002420b65e8c247.gradio.live' },
+      { name: 'english', url: 'https://378f95e6490e9155e2.gradio.live' },
+      { name: 'humanities', url: 'https://b6d308d880d8b0be34.gradio.live' },
+      { name: 'cs', url: 'https://867cd973d0c18e7bf9.gradio.live' },
+      { name: 'ict', url: 'https://867cd973d0c18e7bf9.gradio.live' },
+      { name: 'business', url: 'https://d3152952d084d65c37.gradio.live' }
+    ];
+
+    subjects.forEach(subject => {
+      const btn = document.getElementById(`${subject.name}Btn`);
+      btn.addEventListener('click', () => {
+        // Open the subject URL in a new tab when the button is clicked
+        window.open(subject.url, '_blank');
+      });
+    });
+
+    const wellbeingBtn = document.getElementById('wellbeingBtn');
+    wellbeingBtn.addEventListener('click', () => {
+      // Perform an action when the wellbeing button is clicked
+      alert('You clicked on Wellbeing');
+    });
+
+    // Function to display student area after successful login
+    function showStudentArea(username) {
+      studentNameSpan.textContent = username;
+      loginForm.style.display = 'none';
+      studentArea.style.display = 'block';
+    }
+
+    function increaseBrightness() {
+      document.body.style.filter = "brightness(150%)";
+    }
+
+    function decreaseBrightness() {
+      document.body.style.filter = "brightness(50%)";
+    }
+
+    function normalBrightness() {
+      document.body.style.filter = "brightness(100%)";
+    }
+
+    function zoomIn() {
+      document.body.style.zoom = "150%";
+    }
+
+    function zoomOut() {
+      document.body.style.zoom = "50%";
+    }
+
+    function normalSize() {
+      document.body.style.zoom = "100%";
+    }
+
+    function openCredits() {
+      alert("This website is created by Shaurya Bir and the interface is created by Nathan Ian Balan");
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
